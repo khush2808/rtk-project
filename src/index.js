@@ -1,14 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import { store } from "./store";
+import {configureStore,} from "@reduxjs/toolkit";
 import App from "./App";
 import "./index.css";
+import galleryReducer from "./galleryState";
+const store = configureStore({
+	reducer: {
+		gallery: galleryReducer
+	}
+});
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>
 );
